@@ -1,0 +1,10 @@
+.places {
+  padding-top: 36px;
+  
+}
+
+@media (min-width: px) {
+  .places {
+    padding-top: 51px;
+  }
+}

@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css" type="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект Место</title>
 </head>
-<body>
-    
+<body class="body">
+  <div class="page">  
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="Лого">
+    </header>-  
+    <main class="main">
+<!-- profile -->
+      <section class="profile" aria-label="Профиль">
+        <img src="./images/Avatar.png" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__name-container">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-btn profile__edit-btn_popup-open style-btn" type="button" aria-label="Редактировать">
+            </button>
+          </div>
+          <p class="profile__job">Исследователь океана</p> 
+        </div>
+        <button class="profile__add-btn style-btn" type="button" aria-label="Добавить">
+        </button>
+      </section>
+
+<!-- places -->
+
+      <section class="places" aria-label="Места">
+
+<!-- place -->       
+
+        <ul class="place">
+          <li class="place__content">
+            <img src="./images/siniye-skaly.jpg" alt="Синие скалы" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Синие скалы</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+          <li class="place__content">
+            <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Карачаевск</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+          <li class="place__content">
+            <img src="./images/gora-elbrus.png" alt="Гора Эльбрус" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Гора Эльбрус</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+          <li class="place__content">
+            <img src="./images/usvinskiye-stolby.jpg" alt="Усьвинские столбы" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Усьвинские столбы</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+          <li class="place__content">
+            <img src="./images/dombai.png" alt="Домбай" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Домбай</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+          <li class="place__content">
+            <img src="./images/baikal-lake.jpg" alt="Озеро Байкал" class="place__image">
+            <div class="place__info">
+              <h2 class="place__title">Озеро Байкал</h2>
+              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+<!-- footer  -->
+<footer class="footer">
+  <p class="footer__copyright">
+    &#169; 2023 Mesto Russia
+  </p>
+</footer>
+
+<!-- popup -->
+
+<div class="popup">
+  <div class="popup__content">
+    <button class="popup__close-btn style-btn" type="button" aria-label="Закрыть"></button>
+    <form class="form">
+      <fieldset class="form__contact">
+        <legend class="form__title">Редактировать профиль</legend>
+        <input class="form__input form__input_type_name" type="text" placeholder="Ваше имя">
+        <input class="form__input form__input_type_job" type="text" placeholder="О вас">
+      </fieldset>
+        <button class="form__submit-btn style-btn" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
+</div>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

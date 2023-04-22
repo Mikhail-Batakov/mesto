@@ -1,0 +1,11 @@
+.place__like-btn {
+  background-image: url(../../../images/like-off.svg);
+  background-size: cover;
+  width: 22px;
+  height: 19px;
+
+}
+
+.place__like-btn:hover {
+  opacity: 0.5;
+}
