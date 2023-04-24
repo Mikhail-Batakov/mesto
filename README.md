@@ -18,4 +18,4 @@ JS
 
 **Ссылка на сайт**
 
-* [Ссылка на сайт в Github](https://mikhail-batakov.github.io/russian-travel/)
+* [Ссылка на сайт в Github](https://mikhail-batakov.github.io/mesto/)
