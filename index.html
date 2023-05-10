@@ -64,7 +64,7 @@
 <div class="popup popup_type_add-place">
   <div class="popup__container">
     <button class="popup__close-btn style-btn" type="button" aria-label="Закрыть"></button>
-    <form class="form" name="form-place"> 
+    <form class="form form_type_add-place" name="form-place"> 
       <fieldset class="form__contact">
         <h3 class="form__title">Новое место</h3>
         <input class="form__input form__input_type_place-name" name="place-name" type="text" required placeholder="Название">
@@ -86,11 +86,6 @@
     
 </div>
 
-
-
-
-
-
 <template id="place-template">
   <li class="place">
     <img src="" class="place__image">
@@ -101,7 +96,6 @@
     <button class="place__delete-btn style-btn" type="button" aria-label="Корзина"></button>
   </li>
 </template>
-
 
   <script src="./scripts/index.js" type="module"></script>
 </body>
