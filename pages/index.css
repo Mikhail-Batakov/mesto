@@ -38,6 +38,7 @@
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__info/place__info.css);
 @import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__delete-btn/place__delete-btn.css);
 @import url(../blocks/place/__like-btn/place__like-btn.css);
 @import url(../blocks/place/__like-btn/_active/place__like-btn_active.css);
 
@@ -48,8 +49,14 @@
 /* popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_type/popup_type_zoom.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__zoom-container/popup__zoom-container.css);
+@import url(../blocks/popup/__figure-zoom/popup__figure-zoom.css);
+@import url(../blocks/popup/__zoom-img/popup__zoom-img.css);
+@import url(../blocks/popup/__zoom-caption/popup__zoom-caption.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__close-btn/_type/popup__close-btn_type_zoom.css);
 
 /* form */
 @import url(../blocks/form/form.css);

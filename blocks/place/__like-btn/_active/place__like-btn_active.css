@@ -1,5 +1,5 @@
-/* .place__like-btn_active {
-  background-image: url(../../../../images/Like-off.svg);
+.place__like-btn_active {
+  background-image: url(../../../../images/Like-active.svg);
   background-size: cover;
 
-} */
+}

@@ -33,48 +33,7 @@
       <section class="places" aria-label="Места">
         <ul class="places__content">
 <!-- place -->       
-          <li class="place">
-            <img src="./images/siniye-skaly.jpg" alt="Синие скалы" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Синие скалы</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Карачаевск</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img src="./images/gora-elbrus.png" alt="Гора Эльбрус" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Гора Эльбрус</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img src="./images/usvinskiye-stolby.jpg" alt="Усьвинские столбы" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Усьвинские столбы</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img src="./images/Dombai.png" alt="Домбай" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Домбай</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img src="./images/baikal-lake.jpg" alt="Озеро Байкал" class="place__image">
-            <div class="place__info">
-              <h2 class="place__title">Озеро Байкал</h2>
-              <button class="place__like-btn place__like-btn_active style-btn" type="button" aria-label="Лайк"></button>
-            </div>
-          </li>
+          
         </ul>
       </section>
 
@@ -88,20 +47,62 @@
 
 <!-- popup -->
 
-<div class="popup">
+<div class="popup popup_type_edit-profile">
   <div class="popup__container">
     <button class="popup__close-btn style-btn" type="button" aria-label="Закрыть"></button>
-    <form class="form" name="form-input"> 
+    <form class="form" name="form-profile"> 
       <fieldset class="form__contact">
         <h3 class="form__title">Редактировать профиль</h3>
-        <input class="form__input form__input_type_name" name="form-name" type="text" placeholder="Ваше имя">
-        <input class="form__input form__input_type_job" name="form-job" type="text" placeholder="О вас">
+        <input class="form__input form__input_type_name" name="form-name" type="text" required placeholder="Ваше имя">
+        <input class="form__input form__input_type_job" name="form-job" type="text" required placeholder="О вас">
       </fieldset>
         <button class="form__submit-btn style-btn" type="submit">Сохранить</button>
     </form>
   </div>
 </div>
+
+<div class="popup popup_type_add-place">
+  <div class="popup__container">
+    <button class="popup__close-btn style-btn" type="button" aria-label="Закрыть"></button>
+    <form class="form" name="form-place"> 
+      <fieldset class="form__contact">
+        <h3 class="form__title">Новое место</h3>
+        <input class="form__input form__input_type_place-name" name="place-name" type="text" required placeholder="Название">
+        <input class="form__input form__input_type_place-img" name="place-img" type="url" required placeholder="Ссылка на картинку">
+      </fieldset>
+        <button class="form__submit-btn style-btn" type="submit">Создать</button>
+    </form>
+  </div>
 </div>
-  <script src="./scripts/index.js"></script>
+
+<div class="popup popup_type_zoom">
+  <div class="popup__zoom-container">
+    <button class="popup__close-btn popup__close-btn_type_zoom style-btn" type="button" aria-label="Закрыть"></button>
+    <figure class="popup__figure-zoom">
+      <img class="popup__zoom-img" src="" alt="">
+      <figcaption class="popup__zoom-caption"></figcaption>
+    </figure>
+  </div>
+    
+</div>
+
+
+
+
+
+
+<template id="place-template">
+  <li class="place">
+    <img src="" class="place__image">
+    <div class="place__info">
+      <h2 class="place__title"></h2>
+      <button class="place__like-btn style-btn" type="button" aria-label="Лайк"></button>
+    </div>
+    <button class="place__delete-btn style-btn" type="button" aria-label="Корзина"></button>
+  </li>
+</template>
+
+
+  <script src="./scripts/index.js" type="module"></script>
 </body>
 </html>
