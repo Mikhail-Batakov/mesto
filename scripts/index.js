@@ -1,9 +1,12 @@
 import { initialPlaces } from './constants.js';
 
-const popups = document.querySelectorAll('.popup');
+//const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
-const popupCloseBtn = document.querySelectorAll('.popup__close-btn');
+//const popupCloseBtn = document.querySelector('.popup__close-btn');
+const popupEditProfileCloseBtn = document.querySelector('.popup__close-btn_type_edit-profile');
+const popupAddPlaceCloseBtn = document.querySelector('.popup__close-btn_type_add-place');
+const popupZoomCloseBtn = document.querySelector('.popup__close-btn_type_zoom');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const formEditProfile = document.querySelector('.form');
@@ -24,22 +27,13 @@ const addPlaceBtn = document.querySelector('.profile__add-btn');
 
 //открытие попапов
 function openPopup(popupName) {
-  popupName.classList.add("popup_opened");
+  popupName.classList.add('popup_opened');
 
 };
 
 //закрытие попапов
-function closePopups() {
-  const index = Array.from(popupCloseBtn).indexOf(this);
-
-  popups[index].classList.remove('popup_opened');
-}
-
-popupCloseBtn.forEach( btn => btn.addEventListener( 'click', closePopups ) );
-
-//закрытие формы
-function closeform() {
-  popupEditProfile.classList.remove('popup_opened') || popupAddPlace.classList.remove("popup_opened");
+function closepopup(popupName) {
+  popupName.classList.remove('popup_opened');
 
 };
 
@@ -51,6 +45,14 @@ function openPopupProfileEdit() {
 
 };
 
+//Закрытие попапа редактирование профиля
+const closePopupProfileEdit = () => {
+  closepopup(popupEditProfile);
+
+};
+
+popupEditProfileCloseBtn.addEventListener('click', closePopupProfileEdit);
+
 //заполнение данных профиля
 function handleFormSubmit (evt) {
   evt.preventDefault();
@@ -58,7 +60,7 @@ function handleFormSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  closeform();
+  closepopup(popupEditProfile);
 
 };
 
@@ -99,6 +101,14 @@ const openPopupZoom = () => {
   openPopup(popupZoom);
 }
 
+const closePopupZoom = () => {
+  closepopup(popupZoom);
+
+};
+
+  popupZoomCloseBtn.addEventListener('click', closePopupZoom);
+
+
   placeImage.addEventListener('click', openPopupZoom);
   placeDeleteButton.addEventListener('click', handleDelete);
   placeLikeButton.addEventListener('click', handleLike);
@@ -118,7 +128,13 @@ const openPopupAddPlace = () => {
   openPopup(popupAddPlace);
 };
 
+//закрытие попапа редактирование профиля
+const closePopupAddPlace = () => {
+  closepopup(popupAddPlace);
+
+};
 addPlaceBtn.addEventListener('click', openPopupAddPlace);
+popupAddPlaceCloseBtn.addEventListener('click', closePopupAddPlace);
 
  // добавление новых карточек
 const addNewPlace = (evt) => {
@@ -132,7 +148,7 @@ const addNewPlace = (evt) => {
   const element = createPlaceElement(newPlace);
   placeContainer.prepend(element);
 
-  closeform();
+  closepopup(popupAddPlace);
   
   evt.target.reset(); 
   
@@ -149,9 +165,14 @@ formAddPlace.addEventListener('submit', addNewPlace);
 
 
 
+//закрытие попапов
+// function closePopups() {
+//   const index = Array.from(popupCloseBtn).indexOf(this);
 
+//   popups[index].classList.remove('popup_opened');
+// }
 
-
+// popupCloseBtn.forEach( btn => btn.addEventListener( 'click', closePopups ) );
 
 // const placeNameInput = formElement.querySelector('.form__input_type_place-name');
 // const placeImgInput = formElement.querySelector('.form__input_type_place-img');
