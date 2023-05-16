@@ -15,7 +15,7 @@ const jobInput = formEditProfile.querySelector('.form__input_type_job');
 
 const formAddPlace = document.querySelector('.form_type_add-place');
 const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
-const placeImgInput = formAddPlace.querySelector('.form__input_type_place-img');
+const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
 
 
 const popupZoom = document.querySelector('.popup_type_zoom');
@@ -157,17 +157,9 @@ const addNewPlace = (evt) => {
 formAddPlace.addEventListener('submit', addNewPlace); 
 
 
-
-
-
-
-
-
-
-
 //закрытие попапов
 // function closePopups() {
-//   const index = Array.from(popupCloseBtn).indexOf(this);
+//   const index = Array.from(popupCloseBtn).indexOf(event.target);
 
 //   popups[index].classList.remove('popup_opened');
 // }

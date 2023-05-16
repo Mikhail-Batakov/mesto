@@ -1,5 +1,5 @@
 .form__input {
-  max-width: 238px;
+  width: 100%;
   border: none;
   box-sizing: border-box;
   padding-bottom: 6px;
@@ -11,8 +11,8 @@
 
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .form__input {
     max-width: 358px;
   }
-}
+} */
