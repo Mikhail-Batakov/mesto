@@ -24,6 +24,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
     hideInputError(formElement, inputElement, config);
   }
 
+
 };
 
 //обработчика события input
@@ -40,8 +41,9 @@ const setEventListeners = (formElement, config) => {
       // чтобы проверять его при изменении любого из полей
       toggleButtonState(inputList, submitButton, config);
     });
+    
   });
-
+  toggleButtonState(inputList, submitButton, config);
 }; 
 
 const hasInvalidInput = (inputList) => {

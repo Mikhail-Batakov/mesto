@@ -25,16 +25,34 @@ const popupZoomImg = document.querySelector('.popup__zoom-img');
 const popupAddPlace = document.querySelector('.popup_type_add-place');
 const addPlaceBtn = document.querySelector('.profile__add-btn');
 
-//открытие попапов
-function openPopup(popupName) {
-  popupName.classList.add('popup_opened');
+//закрытие попапов нажатием на Esc
+function handleEscClosePopup(evt) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+  closepopup(openedPopup);
+  }
+  };
+  
+  //закрытие попапов кликом на оверлей
+  function handleOverlayClosePopup(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+  closepopup(evt.target);
+  }
+  };
 
-};
+
+//открытие попапов
+const openPopup = (popupName) => {
+  popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscClosePopup);
+  popupName.addEventListener('click', handleOverlayClosePopup);
+  };
 
 //закрытие попапов
-function closepopup(popupName) {
+const closepopup = (popupName) => {
   popupName.classList.remove('popup_opened');
-
+  document.removeEventListener('keydown', handleEscClosePopup);
+  popupName.removeEventListener('click', handleOverlayClosePopup);
 };
 
 //попап редактирование профиля
@@ -155,6 +173,12 @@ const addNewPlace = (evt) => {
 };
 
 formAddPlace.addEventListener('submit', addNewPlace); 
+
+
+
+
+
+
 
 
 //закрытие попапов
