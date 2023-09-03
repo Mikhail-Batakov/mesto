@@ -1,5 +1,6 @@
 import { initialPlaces } from './constants.js';
 
+const popupNames = document.querySelectorAll('.popup');
 //const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
@@ -27,25 +28,29 @@ const addPlaceBtn = document.querySelector('.profile__add-btn');
 
 //закрытие попапов нажатием на Esc
 function handleEscClosePopup(evt) {
+if (evt.key === 'Escape') {
   const openedPopup = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
   closepopup(openedPopup);
-  }
-  };
-  
+};
+
+};
   //закрытие попапов кликом на оверлей
   function handleOverlayClosePopup(evt) {
   if (evt.target.classList.contains('popup_opened')) {
   closepopup(evt.target);
-  }
+  
   };
+  popupNames.forEach(popupName => {
+    popupName.addEventListener('click', handleOverlayClosePopup);
+    });
 
+  };
 
 //открытие попапов
 const openPopup = (popupName) => {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', handleEscClosePopup);
-  popupName.addEventListener('click', handleOverlayClosePopup);
+  //popupName.addEventListener('click', handleOverlayClosePopup);
   };
 
 //закрытие попапов
@@ -53,14 +58,19 @@ const closepopup = (popupName) => {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEscClosePopup);
   popupName.removeEventListener('click', handleOverlayClosePopup);
+
 };
+
+//установка слушателей на попапы
+// popupNames.forEach(popupName => {
+//   popupName.addEventListener('click', handleOverlayClosePopup);
+//   });
 
 //попап редактирование профиля
 function openPopupProfileEdit() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popupEditProfile);
-
 };
 
 //Закрытие попапа редактирование профиля
@@ -119,20 +129,19 @@ const openPopupZoom = () => {
   openPopup(popupZoom);
 }
 
-const closePopupZoom = () => {
-  closepopup(popupZoom);
-
-};
-
-  popupZoomCloseBtn.addEventListener('click', closePopupZoom);
-
-
   placeImage.addEventListener('click', openPopupZoom);
   placeDeleteButton.addEventListener('click', handleDelete);
   placeLikeButton.addEventListener('click', handleLike);
 
   return placeElement;
 };
+
+const closePopupZoom = () => {
+  closepopup(popupZoom);
+
+};
+
+popupZoomCloseBtn.addEventListener('click', closePopupZoom);
 
 initialPlaces.forEach((place) => {
   const element = createPlaceElement(place);
@@ -169,6 +178,9 @@ const addNewPlace = (evt) => {
   closepopup(popupAddPlace);
   
   evt.target.reset(); 
+
+  evt.submitter.classList.add('form__submit-btn_disabled')
+  evt.submitter.disabled = true; 
   
 };
 
