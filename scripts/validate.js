@@ -24,7 +24,6 @@ const checkInputValidity = (formElement, inputElement, config) => {
     hideInputError(formElement, inputElement, config);
   }
 
-
 };
 
 //обработчика события input
@@ -65,14 +64,14 @@ const hasInvalidInput = (inputList) => {
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
+    // formElement.addEventListener('submit', function (evt) {
+    //   evt.preventDefault();
+    // });
     setEventListeners(formElement, config);
           });
 };
 
-const enableValidationConfig = {
+const configEnableValidation = {
   formSelector: '.form', //формы
   inputSelector: '.form__input', //поля
   submitButtonSelector: '.form__submit-btn', //submit-btn
@@ -81,7 +80,7 @@ const enableValidationConfig = {
   errorClass: 'form__span-error_visible', //надпись об ошибке
 };
 
-enableValidation(enableValidationConfig);
+enableValidation(configEnableValidation);
 
 
 
