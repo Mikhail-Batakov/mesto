@@ -18,7 +18,6 @@ const formAddPlace = document.querySelector('.form_type_add-place');
 const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
 const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
 
-
 const popupZoom = document.querySelector('.popup_type_zoom');
 const popupZoomCaption = document.querySelector('.popup__zoom-caption');
 const popupZoomImg = document.querySelector('.popup__zoom-img');
@@ -28,43 +27,36 @@ const addPlaceBtn = document.querySelector('.profile__add-btn');
 
 //закрытие попапов нажатием на Esc
 function handleEscClosePopup(evt) {
-if (evt.key === 'Escape') {
-  const openedPopup = document.querySelector('.popup_opened');
-  closepopup(openedPopup);
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closepopup(openedPopup);
+  };
 };
 
-};
-  //закрытие попапов кликом на оверлей
-  function handleOverlayClosePopup(evt) {
+//закрытие попапов кликом на оверлей
+function handleOverlayClosePopup(evt) {
   if (evt.target.classList.contains('popup_opened')) {
-  closepopup(evt.target);
-  
+    closepopup(evt.target);
   };
-  popupNames.forEach(popupName => {
-    popupName.addEventListener('click', handleOverlayClosePopup);
-    });
+};
 
-  };
+//установка слушателей
+popupNames.forEach(popupName => {
+  popupName.addEventListener('click', handleOverlayClosePopup);
+});  
 
 //открытие попапов
 const openPopup = (popupName) => {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', handleEscClosePopup);
-  //popupName.addEventListener('click', handleOverlayClosePopup);
-  };
+};
 
 //закрытие попапов
 const closepopup = (popupName) => {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEscClosePopup);
-  popupName.removeEventListener('click', handleOverlayClosePopup);
 
 };
-
-//установка слушателей на попапы
-// popupNames.forEach(popupName => {
-//   popupName.addEventListener('click', handleOverlayClosePopup);
-//   });
 
 //попап редактирование профиля
 function openPopupProfileEdit() {
@@ -160,10 +152,11 @@ const closePopupAddPlace = () => {
   closepopup(popupAddPlace);
 
 };
+
 addPlaceBtn.addEventListener('click', openPopupAddPlace);
 popupAddPlaceCloseBtn.addEventListener('click', closePopupAddPlace);
 
- // добавление новых карточек
+// добавление новых карточек
 const addNewPlace = (evt) => {
   evt.preventDefault();
 
