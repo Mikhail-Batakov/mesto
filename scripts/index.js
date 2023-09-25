@@ -1,13 +1,13 @@
 import { initialPlaces } from './constants.js';
 
-const popupNames = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 //const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
 //const popupCloseBtn = document.querySelector('.popup__close-btn');
-const popupEditProfileCloseBtn = document.querySelector('.popup__close-btn_type_edit-profile');
-const popupAddPlaceCloseBtn = document.querySelector('.popup__close-btn_type_add-place');
-const popupZoomCloseBtn = document.querySelector('.popup__close-btn_type_zoom');
+// const popupEditProfileCloseBtn = document.querySelector('.popup__close-btn_type_edit-profile');
+// const popupAddPlaceCloseBtn = document.querySelector('.popup__close-btn_type_add-place');
+// const popupZoomCloseBtn = document.querySelector('.popup__close-btn_type_zoom');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const formEditProfile = document.querySelector('.form');
@@ -25,35 +25,41 @@ const popupZoomImg = document.querySelector('.popup__zoom-img');
 const popupAddPlace = document.querySelector('.popup_type_add-place');
 const addPlaceBtn = document.querySelector('.profile__add-btn');
 
+// Находим все кнопки закрытия попапов и устанавливаем для них обработчики
+document.querySelectorAll('.popup__close-btn').forEach(button => {
+  const popup = button.closest('.popup'); // Находим родителя с классом 'popup'
+  button.addEventListener('click', () => closePopup(popup)); // Закрываем соответствующий попап
+});
+
 //закрытие попапов нажатием на Esc
 function handleEscClosePopup(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
-    closepopup(openedPopup);
+    closePopup(openedPopup);
   };
 };
 
 //закрытие попапов кликом на оверлей
 function handleOverlayClosePopup(evt) {
   if (evt.target.classList.contains('popup_opened')) {
-    closepopup(evt.target);
+    closePopup(evt.target);
   };
 };
 
 //установка слушателей
-popupNames.forEach(popupName => {
-  popupName.addEventListener('click', handleOverlayClosePopup);
+popups.forEach(popup => {
+  popup.addEventListener('click', handleOverlayClosePopup);
 });  
 
 //открытие попапов
-const openPopup = (popupName) => {
-  popupName.classList.add('popup_opened');
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleEscClosePopup);
 };
 
 //закрытие попапов
-const closepopup = (popupName) => {
-  popupName.classList.remove('popup_opened');
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleEscClosePopup);
 
 };
@@ -66,12 +72,12 @@ function openPopupProfileEdit() {
 };
 
 //Закрытие попапа редактирование профиля
-const closePopupProfileEdit = () => {
-  closepopup(popupEditProfile);
+// const closePopupProfileEdit = () => {
+//   closepopup(popupEditProfile);
 
-};
+// };
 
-popupEditProfileCloseBtn.addEventListener('click', closePopupProfileEdit);
+//popupEditProfileCloseBtn.addEventListener('click', closePopupProfileEdit);
 
 //заполнение данных профиля
 function handleFormSubmit (evt) {
@@ -80,7 +86,7 @@ function handleFormSubmit (evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  closepopup(popupEditProfile);
+  closePopup(popupEditProfile);
 
 };
 
@@ -128,12 +134,12 @@ const openPopupZoom = () => {
   return placeElement;
 };
 
-const closePopupZoom = () => {
-  closepopup(popupZoom);
+// const closePopupZoom = () => {
+//   closepopup(popupZoom);
 
-};
+// };
 
-popupZoomCloseBtn.addEventListener('click', closePopupZoom);
+//popupZoomCloseBtn.addEventListener('click', closePopupZoom);
 
 initialPlaces.forEach((place) => {
   const element = createPlaceElement(place);
@@ -148,13 +154,13 @@ const openPopupAddPlace = () => {
 };
 
 //закрытие попапа редактирование профиля
-const closePopupAddPlace = () => {
-  closepopup(popupAddPlace);
+// const closePopupAddPlace = () => {
+//   closepopup(popupAddPlace);
 
-};
+// };
 
 addPlaceBtn.addEventListener('click', openPopupAddPlace);
-popupAddPlaceCloseBtn.addEventListener('click', closePopupAddPlace);
+//popupAddPlaceCloseBtn.addEventListener('click', closePopupAddPlace);
 
 // добавление новых карточек
 const addNewPlace = (evt) => {
@@ -168,7 +174,7 @@ const addNewPlace = (evt) => {
   const element = createPlaceElement(newPlace);
   placeContainer.prepend(element);
 
-  closepopup(popupAddPlace);
+  closePopup(popupAddPlace);
   
   evt.target.reset(); 
 

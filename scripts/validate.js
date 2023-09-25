@@ -17,7 +17,6 @@ const hideInputError = (formElement, inputElement, config) => {
 
 //Проверка валидации формы
 const checkInputValidity = (formElement, inputElement, config) => {
-
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, config);
   } else {
