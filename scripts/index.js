@@ -1,4 +1,8 @@
 import { initialPlaces } from './constants.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
+import { openPopup, closePopup, configEnableValidation } from '../utils/utils.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
@@ -13,33 +17,22 @@ const formAddPlace = document.querySelector('.form_type_add-place');
 const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
 const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
 
-const popupZoom = document.querySelector('.popup_type_zoom');
-const popupZoomCaption = document.querySelector('.popup__zoom-caption');
-const popupZoomImg = document.querySelector('.popup__zoom-img');
+// const popupZoom = document.querySelector('.popup_type_zoom');
+// const popupZoomCaption = document.querySelector('.popup__zoom-caption');
+// const popupZoomImg = document.querySelector('.popup__zoom-img');
 
 const popupAddPlace = document.querySelector('.popup_type_add-place');
 const addPlaceBtn = document.querySelector('.profile__add-btn');
 
-//открытие попапов
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', handleEscClosePopup);
-};
+const placeContainer = document.querySelector('.places__content');
+const placeTemplateSelector = '#place-template';
 
-//закрытие попапов
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', handleEscClosePopup);
+const formElements = document.querySelectorAll(configEnableValidation.formSelector);
 
-};
-
-//закрытие попапов нажатием на Esc
-function handleEscClosePopup(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  };
-};
+formElements.forEach((formElement) => {
+  const validator = new FormValidator(configEnableValidation, formElement);
+  validator.enableValidation();
+});
 
 //закрытие попапов кликом на оверлей
 function handleOverlayClosePopup(evt) {
@@ -58,7 +51,7 @@ popups.forEach((popup) => {
 // Функция для закрытия попапа при клике на крестик
 function handleClosePopup(evt) {
   const popup = evt.target.closest('.popup'); 
-  closePopup(popup);
+  closePopup(popup); // Закрываем соответствующий попап
 }
 
 //попап редактирование профиля
@@ -82,51 +75,13 @@ function handleFormSubmit (evt) {
 btnPopupProfileEdit.addEventListener('click', openPopupProfileEdit);
 formEditProfile.addEventListener('submit', handleFormSubmit); 
 
-// карточки
-const placeContainer = document.querySelector('.places__content');
-const placeTemplate = document.querySelector('#place-template');
-
-const createPlaceElement = (placeData) => {
-  const placeElement = placeTemplate.content.querySelector('.place').cloneNode(true);
-
-  const placeTitle = placeElement.querySelector('.place__title');
-  const placeImage = placeElement.querySelector('.place__image');
-  const placeDeleteButton = placeElement.querySelector('.place__delete-btn');
-  const placeLikeButton = placeElement.querySelector('.place__like-btn');
-
-  placeTitle.textContent = placeData.name;
-  placeImage.src = placeData.link;
-  placeTitle.alt = placeData.name;
-
-  const handleDelete = () => {
-    placeElement.remove();
-
-  };
-
-  const handleLike = (evt) => {
-    evt.target.classList.toggle('place__like-btn_active');
-
-  };
-
-// попап zoom 
-const openPopupZoom = () => {
-  popupZoomCaption.textContent = placeData.name;
-  popupZoomImg.src = placeData.link;
-  popupZoomImg.alt = placeData.name;
-  openPopup(popupZoom);
-}
-
-  placeImage.addEventListener('click', openPopupZoom);
-  placeDeleteButton.addEventListener('click', handleDelete);
-  placeLikeButton.addEventListener('click', handleLike);
-
-  return placeElement;
+const renderCardElement = (data) => {
+  const cardElement = new Card(data, placeTemplateSelector, openPopup).generateCard();
+  placeContainer.prepend(cardElement);
 };
 
 initialPlaces.forEach((place) => {
-  const element = createPlaceElement(place);
-
-  placeContainer.append(element);
+  renderCardElement (place);
 });
 
 //попап добавления новой карточки
@@ -146,8 +101,10 @@ const addNewPlace = (evt) => {
     link: placeImgInput.value,
   };
 
-  const element = createPlaceElement(newPlace);
-  placeContainer.prepend(element);
+  renderCardElement (newPlace);
+
+  // const element = createPlaceElement(newPlace);
+  // placeContainer.prepend(element);
 
   closePopup(popupAddPlace);
   
@@ -159,12 +116,6 @@ const addNewPlace = (evt) => {
 };
 
 formAddPlace.addEventListener('submit', addNewPlace); 
-
-
-
-
-
-
 
 
 //закрытие попапов
@@ -209,4 +160,51 @@ formAddPlace.addEventListener('submit', addNewPlace);
 
 //   placesContent.append(placeElement);
 
+// });
+
+// // карточки
+// const placeContainer = document.querySelector('.places__content');
+// const placeTemplate = document.querySelector('#place-template');
+
+// const createPlaceElement = (placeData) => {
+//   const placeElement = placeTemplate.content.querySelector('.place').cloneNode(true);
+
+//   const placeTitle = placeElement.querySelector('.place__title');
+//   const placeImage = placeElement.querySelector('.place__image');
+//   const placeDeleteButton = placeElement.querySelector('.place__delete-btn');
+//   const placeLikeButton = placeElement.querySelector('.place__like-btn');
+
+//   placeTitle.textContent = placeData.name;
+//   placeImage.src = placeData.link;
+//   placeTitle.alt = placeData.name;
+
+//   const handleDelete = () => {
+//     placeElement.remove();
+
+//   };
+
+//   const handleLike = (evt) => {
+//     evt.target.classList.toggle('place__like-btn_active');
+
+//   };
+
+// // попап zoom 
+// const openPopupZoom = () => {
+//   popupZoomCaption.textContent = placeData.name;
+//   popupZoomImg.src = placeData.link;
+//   popupZoomImg.alt = placeData.name;
+//   openPopup(popupZoom);
+// }
+
+//   placeImage.addEventListener('click', openPopupZoom);
+//   placeDeleteButton.addEventListener('click', handleDelete);
+//   placeLikeButton.addEventListener('click', handleLike);
+
+//   return placeElement;
+// };
+
+// initialPlaces.forEach((place) => {
+//   const element = createPlaceElement(place);
+
+//   placeContainer.append(element);
 // });

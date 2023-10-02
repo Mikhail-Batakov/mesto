@@ -1,3 +1,4 @@
+
 export default class FormValidator {
   // Конструктор класса, принимает объект config и элемент формы.
   constructor(config, formElement) { 
@@ -77,7 +78,21 @@ export default class FormValidator {
 
 }
 
+const configEnableValidation = {
+  formSelector: '.form', // формы
+  inputSelector: '.form__input', // поля
+  submitButtonSelector: '.form__submit-btn', // submit-btn
+  inactiveButtonClass: 'form__submit-btn_disabled', // submit-btn-disable
+  inputErrorClass: 'form__input_type_error', // красная линия инпут
+  errorClass: 'form__span-error_visible', // надпись об ошибке
+};
 
+const formElements = document.querySelectorAll(configEnableValidation.formSelector);
+
+formElements.forEach((formElement) => {
+  const validator = new FormValidator(configEnableValidation, formElement);
+  validator.enableValidation();
+});
 
 
 
