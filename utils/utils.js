@@ -1,12 +1,3 @@
-export const configEnableValidation = {
-  formSelector: '.form', // формы
-  inputSelector: '.form__input', // поля
-  submitButtonSelector: '.form__submit-btn', // submit-btn
-  inactiveButtonClass: 'form__submit-btn_disabled', // submit-btn-disable
-  inputErrorClass: 'form__input_type_error', // красная линия инпут
-  errorClass: 'form__span-error_visible', // надпись об ошибке
-};
-
 //открытие попапов
 export const openPopup = (popup) => {
   popup.classList.add('popup_opened');

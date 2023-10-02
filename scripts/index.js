@@ -1,8 +1,8 @@
-import { initialPlaces } from './constants.js';
+import { initialPlaces, configEnableValidation } from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
-import { openPopup, closePopup, configEnableValidation } from '../utils/utils.js';
+import { openPopup, closePopup } from '../utils/utils.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
@@ -29,10 +29,16 @@ const placeTemplateSelector = '#place-template';
 
 const formElements = document.querySelectorAll(configEnableValidation.formSelector);
 
-formElements.forEach((formElement) => {
-  const validator = new FormValidator(configEnableValidation, formElement);
-  validator.enableValidation();
-});
+// formElements.forEach((formElement) => {
+//   const validator = new FormValidator(configEnableValidation, formElement);
+//   validator.enableValidation();
+// });
+
+const formValidatorformEditProfile = new FormValidator(configEnableValidation, formEditProfile);
+formValidatorformEditProfile.enableValidation();
+
+const formValidatorForAddPlace = new FormValidator(configEnableValidation, formAddPlace);
+formValidatorForAddPlace.enableValidation();
 
 //закрытие попапов кликом на оверлей
 function handleOverlayClosePopup(evt) {
@@ -62,7 +68,7 @@ function openPopupProfileEdit() {
 };
 
 //заполнение данных профиля
-function handleFormSubmit (evt) {
+function handleFormSubmitProfile (evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
@@ -73,7 +79,7 @@ function handleFormSubmit (evt) {
 };
 
 btnPopupProfileEdit.addEventListener('click', openPopupProfileEdit);
-formEditProfile.addEventListener('submit', handleFormSubmit); 
+formEditProfile.addEventListener('submit', handleFormSubmitProfile); 
 
 const renderCardElement = (data) => {
   const cardElement = new Card(data, placeTemplateSelector, openPopup).generateCard();
@@ -101,110 +107,14 @@ const addNewPlace = (evt) => {
     link: placeImgInput.value,
   };
 
-  renderCardElement (newPlace);
-
-  // const element = createPlaceElement(newPlace);
-  // placeContainer.prepend(element);
+  renderCardElement(newPlace);
 
   closePopup(popupAddPlace);
   
   evt.target.reset(); 
 
-  evt.submitter.classList.add('form__submit-btn_disabled')
-  evt.submitter.disabled = true; 
+  formValidatorForAddPlace.resetValidation();
   
 };
 
 formAddPlace.addEventListener('submit', addNewPlace); 
-
-
-//закрытие попапов
-// function closePopups() {
-//   const index = Array.from(popupCloseBtn).indexOf(event.target);
-
-//   popups[index].classList.remove('popup_opened');
-// }
-
-// popupCloseBtn.forEach( btn => btn.addEventListener( 'click', closePopups ) );
-
-// const placeNameInput = formElement.querySelector('.form__input_type_place-name');
-// const placeImgInput = formElement.querySelector('.form__input_type_place-img');
-
-// карточки вариант
-// const placesContent = document.querySelector('.places__content');
-// const placeTemplate = document.querySelector('#place-template').content;
-
-
-// initialCards.forEach(function (element) {
-//   const placeElement = placeTemplate.cloneNode(true);
-
-//   placeElement.querySelector('.place__title').textContent = element.name;
-//   placeElement.querySelector('.place__image').src = element.link;
-
-//   placeElement.querySelector('.place__like-btn').addEventListener('click', (evt) => {
-//   evt.target.classList.toggle('place__like-btn_active')
-
-// }); 
-
-// //выберем кнопку удаления
-// const deleteButton = placeElement.querySelector('.place__trash-can');
-
-// // добавим обработчик
-// deleteButton.addEventListener('click', function () {
-//   const listItem = deleteButton.closest('.place');
-// console.log(listItem);
-
-//   listItem.remove();
-
-// });
-
-//   placesContent.append(placeElement);
-
-// });
-
-// // карточки
-// const placeContainer = document.querySelector('.places__content');
-// const placeTemplate = document.querySelector('#place-template');
-
-// const createPlaceElement = (placeData) => {
-//   const placeElement = placeTemplate.content.querySelector('.place').cloneNode(true);
-
-//   const placeTitle = placeElement.querySelector('.place__title');
-//   const placeImage = placeElement.querySelector('.place__image');
-//   const placeDeleteButton = placeElement.querySelector('.place__delete-btn');
-//   const placeLikeButton = placeElement.querySelector('.place__like-btn');
-
-//   placeTitle.textContent = placeData.name;
-//   placeImage.src = placeData.link;
-//   placeTitle.alt = placeData.name;
-
-//   const handleDelete = () => {
-//     placeElement.remove();
-
-//   };
-
-//   const handleLike = (evt) => {
-//     evt.target.classList.toggle('place__like-btn_active');
-
-//   };
-
-// // попап zoom 
-// const openPopupZoom = () => {
-//   popupZoomCaption.textContent = placeData.name;
-//   popupZoomImg.src = placeData.link;
-//   popupZoomImg.alt = placeData.name;
-//   openPopup(popupZoom);
-// }
-
-//   placeImage.addEventListener('click', openPopupZoom);
-//   placeDeleteButton.addEventListener('click', handleDelete);
-//   placeLikeButton.addEventListener('click', handleLike);
-
-//   return placeElement;
-// };
-
-// initialPlaces.forEach((place) => {
-//   const element = createPlaceElement(place);
-
-//   placeContainer.append(element);
-// });
