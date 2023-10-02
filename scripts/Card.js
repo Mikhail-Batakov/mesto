@@ -35,6 +35,7 @@ export default class Card {
 
   // Приватный метод для обработки клика по карточке (открытие попапа с увеличенным изображением)
   _handleCardClick() {
+    this._popupZoom = document.querySelector('.popup_type_zoom');
     // Заполняем попап данными из текущей карточки
     this._popupZoom.querySelector('.popup__zoom-caption').textContent = this._name;
     this._popupZoom.querySelector('.popup__zoom-img').src = this._link;
