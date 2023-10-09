@@ -10,15 +10,17 @@ export default class Card {
     this._link = data.link;
     // Сохраняем селектор template-элемента
     this._templateSelector = templateSelector;
+
+    //this._handleCardClick = handleCardClick;
     
   }
 
   // Приватный метод для получения шаблона карточки из DOM
   _getTemplate() {
     const cardElement = document
-      .querySelector(this._templateSelector)
-      .content.querySelector('.place')
-      .cloneNode(true);
+    .querySelector(this._templateSelector)
+    .content.querySelector('.place')
+    .cloneNode(true);
 
     return cardElement;
   }
@@ -40,13 +42,12 @@ export default class Card {
     popupZoomImg.src = this._link;
     popupZoomImg.alt = this._name;
     // Открываем попап с увеличенным изображением
-    openPopup(this._popupZoom);
-  }
+    openPopup(popupZoom);
+  }Ы
 
   // Приватный метод для установки слушателей событий на элемент карточки
   _setEventListeners() {
     this._buttonLike = this._element.querySelector('.place__like-btn'); // Сохраняем ссылку на кнопку лайка
-    this._popupZoom = popupZoom; 
 
     // Добавляем слушатель события для кнопки "Лайк"
     this._buttonLike.addEventListener('click', () => {

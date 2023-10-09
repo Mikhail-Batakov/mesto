@@ -17,10 +17,6 @@ const formAddPlace = document.querySelector('.form_type_add-place');
 const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
 const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
 
-// const popupZoom = document.querySelector('.popup_type_zoom');
-// const popupZoomCaption = document.querySelector('.popup__zoom-caption');
-// const popupZoomImg = document.querySelector('.popup__zoom-img');
-
 const popupAddPlace = document.querySelector('.popup_type_add-place');
 const addPlaceBtn = document.querySelector('.profile__add-btn');
 
