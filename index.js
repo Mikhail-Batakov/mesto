@@ -1,8 +1,8 @@
-import { initialPlaces, configEnableValidation } from './constants.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import { initialPlaces, configEnableValidation } from './utils/constants.js';
+import Card from './components/Card.js';
+import FormValidator from './components/FormValidator.js';
 
-import { openPopup, closePopup } from '../utils/utils.js';
+import { openPopup, closePopup } from './utils/utils.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');

@@ -1,6 +1,6 @@
 // Импортируем функцию открытия попапа из модуля
 import { openPopup } from '../utils/utils.js';
-import { popupZoom, popupZoomCaption, popupZoomImg } from './constants.js';
+import { popupZoom, popupZoomCaption, popupZoomImg } from '../utils/constants.js';
 
 // Класс, представляющий карточку
 export default class Card {
@@ -43,7 +43,7 @@ export default class Card {
     popupZoomImg.alt = this._name;
     // Открываем попап с увеличенным изображением
     openPopup(popupZoom);
-  }Ы
+  }
 
   // Приватный метод для установки слушателей событий на элемент карточки
   _setEventListeners() {
