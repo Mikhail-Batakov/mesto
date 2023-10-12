@@ -34,6 +34,25 @@ export const configEnableValidation = {
   errorClass: 'form__span-error_visible', // надпись об ошибке
 };
 
+export const popups = document.querySelectorAll('.popup');
+
+//export const closeButton = document.querySelector('.popup__close-btn');
+
 export const popupZoom = document.querySelector('.popup_type_zoom');
 export const popupZoomCaption = document.querySelector('.popup__zoom-caption');
 export const popupZoomImg = document.querySelector('.popup__zoom-img');
+
+export const cardTemplateSelector = '#place-template';
+export const placeContainerSelector = '.places__content';
+
+export const formEditProfile = document.querySelector('.form');
+export const nameInput = document.querySelector('.form__input_type_name');
+export const jobInput = document.querySelector('.form__input_type_job');
+
+export const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
+export const addPlaceBtn = document.querySelector('.profile__add-btn');
+
+export const formAddPlace = document.querySelector('.form_type_add-place');
+
+export const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
+export const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');

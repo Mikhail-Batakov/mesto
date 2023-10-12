@@ -1,17 +1,13 @@
-// Импортируем функцию открытия попапа из модуля
-import { openPopup } from '../utils/utils.js';
-import { popupZoom, popupZoomCaption, popupZoomImg } from '../utils/constants.js';
-
 // Класс, представляющий карточку
 export default class Card {
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, { handleCardClick }) {
     // Сохраняем данные карточки (название и ссылку на изображение)
     this._name = data.name;
     this._link = data.link;
     // Сохраняем селектор template-элемента
     this._templateSelector = templateSelector;
 
-    //this._handleCardClick = handleCardClick;
+    this._handleCardClick = handleCardClick;
     
   }
 
@@ -36,15 +32,6 @@ export default class Card {
     this._element = null; // Очищаем ссылку на DOM-элемент
   }
 
-  // Приватный метод для обработки клика по карточке (открытие попапа с увеличенным изображением)
-  _handleCardClick() {
-    popupZoomCaption.textContent = this._name;
-    popupZoomImg.src = this._link;
-    popupZoomImg.alt = this._name;
-    // Открываем попап с увеличенным изображением
-    openPopup(popupZoom);
-  }
-
   // Приватный метод для установки слушателей событий на элемент карточки
   _setEventListeners() {
     this._buttonLike = this._element.querySelector('.place__like-btn'); // Сохраняем ссылку на кнопку лайка
@@ -61,24 +48,35 @@ export default class Card {
 
     // Добавляем слушатель события для клика по изображению (открытие попапа с увеличенным изображением)
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._name, this._link);
+
     });
   }
 
   // Публичный метод для создания и возврата элемента карточки
-  generateCard() {
+  generateCardElement() {
     // Создаем элемент карточки, используя шаблон и данные из текущего объекта
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.place__image');
-
-    this._element.querySelector('.place__title').textContent = this._name;
+    this._cardName = this._element.querySelector('.place__title');
+ // Устанавливаем слушатели событий для элемента карточки
+    this._setEventListeners();
+    this._cardName.textContent = this._name;
     this._cardImage.src = this._link; 
     this._cardImage.alt = this._name;
-
-    // Устанавливаем слушатели событий для элемента карточки
-    this._setEventListeners();
 
     // Возвращаем созданный элемент карточки
     return this._element;
   }
 }
+
+
+
+  //Приватный метод для обработки клика по карточке (открытие попапа с увеличенным изображением)
+  // _handleCardClick() {
+  //   popupZoomCaption.textContent = this._name;
+  //   popupZoomImg.src = this._link;
+  //   popupZoomImg.alt = this._name;
+  //   // Открываем попап с увеличенным изображением
+  //   openPopup(popupZoom);
+  // }
