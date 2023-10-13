@@ -10,11 +10,11 @@ export default class PopupWithImage extends Popup {
     //console.log(this._popupCaption, this._popupImage);
   };
 
-  open(cardCaption, cardImage) {
+  open(itemCaption, itemImage) {
      // Устанавливаем src изображения, alt и текст подписи к изображению в попапе
-    this._popupImage.src = cardImage;
-    this._popupImage.alt = cardCaption;
-    this._popupCaption.textContent = cardCaption;
+    this._popupImage.src = itemImage;
+    this._popupImage.alt = itemCaption;
+    this._popupCaption.textContent = itemCaption;
 
     // Вызываем метод открытия попапа из родительского класса
     super.open();

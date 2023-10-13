@@ -30,7 +30,7 @@ export default class Popup {
 // Метод для установки слушателей событий
   setEventListeners() {
     // Устанавливаем слушатель клика на попапе
-    this._popup.addEventListener('click', (evt) => {
+    this._popup.addEventListener('mousedown', (evt) => {
        // Если клик произошел на оверлее или кнопке закрытия, вызываем метод close()
       if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close-btn')) {
         this.close();
@@ -40,12 +40,3 @@ export default class Popup {
   }
 
 }
-
-
-// setEventListeners() {
-//   this._popupSelector.addEventListener('click', (event) => {
-//     if (event.target.classList.contains('popup_opened') || event.target.classList.contains('popup__button-close')) {
-//       this.close();
-//     };
-//   });
-// };
