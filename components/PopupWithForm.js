@@ -17,7 +17,6 @@ export default class PopupWithForm extends Popup {
     this._formValues = {};  // Создаем свойство объекта для хранения данных полей формы
     // Сохраняем значения полей в свойство объекта
     this._inputList.forEach(input => this._formValues[input.name] = input.value); 
-      
     return this._formValues; // Возвращаем сохраненные значения
 
   }
@@ -28,12 +27,12 @@ export default class PopupWithForm extends Popup {
     // Добавляем слушатель события submit формы
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      console.log('отправка массива')
+      //console.log('отправка массива')
       // Вызываем колбэк сабмита формы и передаем ему данные полей формы
       this._submitFormCallback(this._getInputValues());
       // Закрываем попап после успешной отправки формы
       this.close();
-      console.log('сабмит')
+      //console.log('сабмит')
 
     });
 

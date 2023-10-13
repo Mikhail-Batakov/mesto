@@ -5,10 +5,11 @@ import Section from './components/Section.js';
 import FormValidator from './components/FormValidator.js';
 
 //import Popup from './components/Popup.js';
+import UserInfo from './components/UserInfo.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForm from './components/PopupWithForm.js';
 
-import UserInfo from './components/UserInfo.js';
+
 
 import { 
   initialPlaces,
@@ -22,10 +23,9 @@ import {
   formAddPlace,
   placeNameInput, 
   placeImgInput,
-  addPlaceBtn
+  addPlaceBtn,
   
 } from './utils/constants.js';
-
 
 const formValidatorformEditProfile = new FormValidator(configEnableValidation, formEditProfile);
 formValidatorformEditProfile.enableValidation();
@@ -35,6 +35,7 @@ formValidatorForAddPlace.enableValidation();
 
 const popupZoom = new PopupWithImage('.popup_type_zoom');
 popupZoom.setEventListeners();
+
 // Создаем экземпляр класса Section, передавая ему данные и функцию-рендерер
 const cardList = new Section({
   items: initialPlaces, // Массив данных для карточек
@@ -85,27 +86,30 @@ const userInfo = new UserInfo({
 
 });
 
-const currentUserInfo = userInfo.getUserInfo();
-console.log(currentUserInfo);
+// const currentUserInfo = userInfo.getUserInfo();
+// console.log(currentUserInfo);
 
-// Создайте экземпляр класса PopupWithForm и передайте ему селектор попапа и функцию обратного вызова
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup_type_edit-profile',
-  submitFormCallback: (formData) => {
-    userInfo.setUserInfo(formData);
-
-    console.log(formData); // Выведет объект с данными формы
-    // После обработки данных закройте попап редактирования профиля
-    popupEditProfile.close();
+  submitFormCallback: () => {
+    const newData = { name: nameInput.value, job: jobInput.value };
+    userInfo.setUserInfo(newData); // Передаем данные в метод setUserInfo объекта userInfo
+    popupEditProfile.close(); // Закрываем попап
+    
   }
 });
 
-// Добавьте слушатель события на кнопку открытия попапа редактирования профиля
-btnPopupProfileEdit.addEventListener('click', () => {
-  // Перед открытием попапа установите текущие значения полей формы
+function setCurrentUserInfo() {
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.name;
   jobInput.value = currentUserInfo.job;
+
+}
+
+btnPopupProfileEdit.addEventListener('click', () => {
+  // Перед открытием попапа установит текущие значения полей формы
+  setCurrentUserInfo();
+  formValidatorformEditProfile.enableValidation();
   // Откройте попап редактирования профиля
   popupEditProfile.open();
 });
@@ -119,13 +123,23 @@ popupEditProfile.setEventListeners();
 
 
 
+// // Создайте экземпляр класса PopupWithForm и передайте ему селектор попапа и функцию обратного вызова
+// const popupEditProfile = new PopupWithForm({
+//   popupSelector: '.popup_type_edit-profile',
+//   submitFormCallback: (formData) => {
+//     const { name, job } = formData; // Деструктурируем объект formData, чтобы получить name и job
+//     if (name && job) { // Проверяем, что данные не пустые
+//       userInfo.setUserInfo({ profileName: name.value, profileJob: job.value }); // Передаем данные в метод setUserInfo объекта userInfo
+//       popupEditProfile.close(); // Закрываем попап
+//     } else {
+//       console.error('Ошибка: поля формы не должны быть пустыми');
+//     }
 
-
-
-
-
-
-
+//     console.log(name, job); // Выведет объект с данными формы
+//     // После обработки данных закройте попап редактирования профиля
+//     popupEditProfile.close();
+//   }
+// });
 
 // const popupProfileEdit = new PopupWithForm({popupSelector: '.popup_type_edit-profile', handleProfileFormSubmit: (data) => {
 //   userInfo.setUserInfo(data.profileName, data.profileJob);
@@ -145,9 +159,6 @@ popupEditProfile.setEventListeners();
 
   
 // });
-
-
-
 
 // const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 // const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
@@ -169,7 +180,6 @@ popupEditProfile.setEventListeners();
 //   popupProfileEdit.open(); 
 // });
 
-
 //   function setProfileInputs() {
 //     const profileInput = userInfo.getUserInfo();
 //     nameInput.value = profileInput.profileName;
@@ -177,9 +187,7 @@ popupEditProfile.setEventListeners();
 //     console.log(jobInput.value, nameInput.value)
 //   }
 
-
 //   popupProfileEdit.setEventListeners();
-
 
 // const popupProfileEdit = new PopupWithForm({
 //   popupSelector: '.popup_type_edit-profile',
@@ -206,9 +214,6 @@ popupEditProfile.setEventListeners();
 
 // });
 
-
-
-
 // const popupProfileEdit = new PopupWithForm({
 //   popupSelector: '.popup_type_edit-profile', submitFormCallback: (data) => {
 //     userInfo.setUserInfo(data);
@@ -224,7 +229,6 @@ popupEditProfile.setEventListeners();
 //   }
 // }, '.places__content');
 
-
 // function generateCard (data) {
 //   const cardElement = new Card(data, placeTemplateSelector, handleCardClick);
 //   const cardAdd = cardElement.generateCardElement();
@@ -232,13 +236,9 @@ popupEditProfile.setEventListeners();
   
 // };
 
-
-
 // function handleCardClick(name, link) {
 //   popupZoom.open(name, link);
 // }
-
-
 
 
 // const cardList = new Section({
@@ -248,8 +248,6 @@ popupEditProfile.setEventListeners();
 //     cardList.addItem(card);
 //   }
 // }, '.places__content');
-
-
 
 // function generateCard(data, { handleCardClick }) {
 //   const cardElement = new Card(data, placeTemplateSelector, { handleCardClick });
@@ -266,9 +264,6 @@ popupEditProfile.setEventListeners();
 //   console.log("name:", name, "link:", link);
 // }
 // console.log(handleCardClick);
-
-
-
 
 //закрытие попапов кликом на оверлей
 // function handleOverlayClosePopup(evt) {
@@ -353,9 +348,6 @@ popupEditProfile.setEventListeners();
 // };
 
 // formAddPlace.addEventListener('submit', addNewPlace); 
-
-
-
 
 
 //const formElements = document.querySelectorAll(configEnableValidation.formSelector);

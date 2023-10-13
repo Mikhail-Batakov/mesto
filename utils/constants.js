@@ -36,12 +36,6 @@ export const configEnableValidation = {
 
 export const popups = document.querySelectorAll('.popup');
 
-//export const closeButton = document.querySelector('.popup__close-btn');
-
-export const popupZoom = document.querySelector('.popup_type_zoom');
-export const popupZoomCaption = document.querySelector('.popup__zoom-caption');
-export const popupZoomImg = document.querySelector('.popup__zoom-img');
-
 export const cardTemplateSelector = '#place-template';
 export const placeContainerSelector = '.places__content';
 
