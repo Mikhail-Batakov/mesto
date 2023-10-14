@@ -66,9 +66,9 @@ cardList.renderItems();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_type_add-place',
   submitFormCallback: () => {
-    const newCard = { name: placeNameInput.value, link: placeImgInput.value };
+    const newCardData = { name: placeNameInput.value, link: placeImgInput.value };
     // Используем функцию createCard для создания новой карточки
-    const cardElement = createCard(newCard, cardTemplateSelector, (name, link) => {
+    const cardElement = createCard(newCardData, cardTemplateSelector, (name, link) => {
       // При клике на карточку открываем попап с изображением и его подписью
       popupZoom.open(name, link);
     });
