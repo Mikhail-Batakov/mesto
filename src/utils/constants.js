@@ -47,6 +47,7 @@ export const btnPopupProfileEdit = document.querySelector('.profile__edit-btn');
 export const addPlaceBtn = document.querySelector('.profile__add-btn');
 
 export const formAddPlace = document.querySelector('.form_type_add-place');
+// export const formEditAvatar = document.querySelector('.form_type_edit-avatar');
 
 export const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
 export const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');

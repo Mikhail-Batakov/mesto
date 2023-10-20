@@ -1,14 +1,15 @@
 // Класс, представляющий карточку
 export default class Card {
-    constructor(data, templateSelector, { handleCardClick }) {
+    constructor(data, templateSelector, openpopupDeleteCard, { handleCardClick }) {
     // Сохраняем данные карточки (название и ссылку на изображение)
+    //this._data = data;
     this._name = data.name;
     this._link = data.link;
     // Сохраняем селектор template-элемента
     this._templateSelector = templateSelector;
-
+    this._openpopupDeleteCard = openpopupDeleteCard;
     this._handleCardClick = handleCardClick;
-    
+
   }
 
   // Приватный метод для получения шаблона карточки из DOM
@@ -27,9 +28,16 @@ export default class Card {
   }
 
   // Приватный метод для обработки клика по кнопке "Удалить"
-  _handleDeleteCard() {
+  _handleDeleteCard = () => { //сделали стрелочной
+    // this._element.remove();
+    // this._element = null; // Очищаем ссылку на DOM-элемент
+    this._openpopupDeleteCard(this);// ++
+  }
+
+  removeCard() {
     this._element.remove();
     this._element = null; // Очищаем ссылку на DOM-элемент
+
   }
 
   // Приватный метод для установки слушателей событий на элемент карточки
@@ -42,9 +50,7 @@ export default class Card {
     });
 
     // Добавляем слушатель события для кнопки "Удалить"
-    this._element.querySelector('.place__delete-btn').addEventListener('click', () => {
-      this._handleDeleteCard();
-    });
+    this._cardDeleteBtn.addEventListener('click', this._handleDeleteCard);
 
     // Добавляем слушатель события для клика по изображению (открытие попапа с увеличенным изображением)
     this._cardImage.addEventListener('click', () => {
@@ -59,6 +65,7 @@ export default class Card {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.place__image');
     this._cardName = this._element.querySelector('.place__title');
+    this._cardDeleteBtn = this._element.querySelector('.place__delete-btn'); // +кнопка удаления карточки
  // Устанавливаем слушатели событий для элемента карточки
     this._setEventListeners();
     this._cardName.textContent = this._name;

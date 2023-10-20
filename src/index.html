@@ -15,7 +15,10 @@
     <main class="main">
 <!-- profile -->
       <section class="profile" aria-label="Профиль">
-        <img src="<%=require('./images/profile-image.jpg')%>" alt="Аватар" class="profile__avatar">
+        
+        <button class="profile__avatar-btn style-btn" type="button" aria-label="Редактировать">
+          <img src="<%=require('./images/profile-image.jpg')%>" alt="Аватар" class="profile__avatar">
+        </button>
         <div class="profile__info">
           <div class="profile__name-container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -101,13 +104,44 @@
     
 </div>
 
+<!-- popup edit-avatar -->
+<div class="popup popup_type_edit-avatar">
+  <div class="popup__container">
+    <button class="popup__close-btn popup__close-btn_type_edit-avatar style-btn" type="button" aria-label="Закрыть"></button>
+    <h3 class="popup__title">Обновить аватар</h3>
+    <form class="form form_type_edit-avatar" name="edit-avatar" novalidate> 
+      <div class="form__contact">
+        <label class="form__label" for="input-avatar-link">
+          <input id="input-avatar-link" class="form__input form__input_type_avatar-link" name="input-avatar-link" //name="avatar" type="url" required placeholder="Ссылка на картинку">
+          <span class="form__span-error input-avatar-link-error"></span>  
+         </label>
+      </div>
+        <button class="form__submit-btn form__submit-btn_type_edit-avatar style-btn" type="submit">Сохранить</button>
+    </form>
+  </div>
+</div>
+
+<!-- popup delete-card -->
+<div class="popup popup_type_delete-card">
+  <div class="popup__container">
+    <button class="popup__close-btn popup__close-btn_type_delete-card style-btn" type="button" aria-label="Закрыть"></button>
+    <h3 class="popup__title popup__title_type_delete-card">Вы уверены?</h3>
+    <form class="form form_type_delete-card" name="edit-avatar" novalidate> 
+      <button class="form__submit-btn style-btn" type="submit">Да</button>
+    </form>
+  </div>
+</div>
+
 <!-- темплейт -->
 <template id="place-template">
   <li class="place">
     <img class="place__image">
     <div class="place__info">
       <h2 class="place__title"></h2>
-      <button class="place__like-btn style-btn" type="button" aria-label="Лайк"></button>
+        <div class="place__like-container">
+          <button class="place__like-btn style-btn" type="button" aria-label="Лайк"></button>
+          <span class="place__likes-number">1</span>
+        </div>
     </div>
     <button class="place__delete-btn style-btn" type="button" aria-label="Корзина"></button>
   </li>

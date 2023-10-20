@@ -6,6 +6,8 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
      // Привязываем контекст к обработчикам событий
     this._handleEscClose = this._handleEscClose.bind(this);
+   // Находим форму внутри попапа и сохраняем
+    this._formElement = this._popup.querySelector('.form');
   }
 
   // Метод для открытия попапа

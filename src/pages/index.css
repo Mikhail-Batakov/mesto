@@ -20,6 +20,7 @@
 /* profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name-container/profile__name-container.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -39,7 +40,9 @@
 @import url(../blocks/place/__info/place__info.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__delete-btn/place__delete-btn.css);
+@import url(../blocks/place/__like-container/place__like-container.css);
 @import url(../blocks/place/__like-btn/place__like-btn.css);
+@import url(../blocks/place/__likes-number/place__likes-number.css);
 @import url(../blocks/place/__like-btn/_active/place__like-btn_active.css);
 
 /* footer */
@@ -52,6 +55,7 @@
 @import url(../blocks/popup/_type/popup_type_zoom.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__title/_type/popup__title_type_delete-card.css);
 @import url(../blocks/popup/__zoom-container/popup__zoom-container.css);
 @import url(../blocks/popup/__figure-zoom/popup__figure-zoom.css);
 @import url(../blocks/popup/__zoom-img/popup__zoom-img.css);
@@ -69,6 +73,7 @@
 @import url(../blocks/form/__span-error/form__span-error.css);
 @import url(../blocks/form/__span-error/_visible/form__span-error_visible.css);
 @import url(../blocks/form/__submit-btn/form__submit-btn.css);
+@import url(../blocks/form/__submit-btn/_type/form__submit-btn_type_edit-avatar.css);
 @import url(../blocks/form/__submit-btn/_disabled/form__submit-btn_disabled.css);
 
 
