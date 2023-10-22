@@ -129,15 +129,14 @@ const cardList = new Section(
 const popupAddCard = new PopupWithForm({
   popupSelector: ".popup_type_add-place",
   submitFormCallback: (data) => {
-    Promise.all([api.getUserInfo(), api.sendNewCardInfo(data)])
-      .then(([userData, cardData]) => {
-        cardData.myId = userData._id;
+    api
+      .sendNewCardInfo({ ...data, myId: myUserId }) // Добавляем myId при создании новой карточки
+      .then((cardData) => {
+        cardData.myId = myUserId;
         cardList.addItem(createCard(cardData));
         popupAddCard.close();
       })
-      .catch((error) =>
-        console.error(`Ошибка при добавлении карточки ${error}`),
-      )
+      .catch((error) => console.error(`Ошибка при добавлении карточки ${error}`))
       .finally(() => popupAddCard.setInitialText());
   },
 });
@@ -210,11 +209,14 @@ btnPopupProfileEdit.addEventListener("click", () => {
 // Установите слушатели событий для попапа редактирования профиля
 popupEditProfile.setEventListeners();
 
+let myUserId
+
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardData]) => {
+    myUserId = userData._id;
     //добавляем myId в карточку
     cardData.forEach((element) => {
-      element.myId = userData._id;
+      element.myId = myUserId;
     });
 
     userInfo.setUserInfo({
