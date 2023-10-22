@@ -85,7 +85,7 @@ _handleOpenPopupZoom = () => {
     this._cardImage.addEventListener('click', this._handleOpenPopupZoom);
   }
 
-  // Публичный метод для создания и возврата элемента карточки
+  // Метод для создания и возврата элемента карточки
   generateCardElement() {
     this._element = this._getTemplate();
 
