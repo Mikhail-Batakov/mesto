@@ -10,8 +10,10 @@ export default class PopupWithForm extends Popup {
     //this._formElement = this._popup.querySelector('.form'); проверить
     // Находим все элементы ввода внутри формы попапа и сохраняем
     this._inputList = Array.from(this._formElement.querySelectorAll('.form__input'));
+    this._submitBtn = this._formElement.querySelector('.form__submit-btn');
+    this._initialButtonText = this._submitBtn.textContent;
   }
-
+//
   // Приватный метод для сбора данных всех полей формы
   _getInputValues() {
     this._formValues = {};  // Создаем свойство объекта для хранения данных полей формы
@@ -22,10 +24,9 @@ export default class PopupWithForm extends Popup {
 
   }
 
-  //убрать
-  setInputValue(dataUser) {
-    this._inputList.forEach(input => {
-      input.value = dataUser[input.name]}); 
+  setInitialText() {
+    this._submitBtn.textContent = this._initialButtonText;
+
   }
 
   setEventListeners() {
@@ -34,12 +35,9 @@ export default class PopupWithForm extends Popup {
     // Добавляем слушатель события submit формы
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      //console.log('отправка массива')
+      this._submitBtn.textContent = `${this._submitBtn.textContent}...` //добавление ... при загрузке сабмита
       // Вызываем колбэк сабмита формы и передаем ему данные полей формы
       this._submitFormCallback(this._getInputValues());
-      // Закрываем попап после успешной отправки формы
-      //this.close();
-      //console.log('сабмит')
 
     });
 

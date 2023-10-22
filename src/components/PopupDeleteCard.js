@@ -6,8 +6,11 @@ export default class PopupDeletCard extends Popup {
     super(popupSelector);
     // Сохраняем колбэк сабмита формы
     this._submitFormCallback = submitFormCallback;
+    this._submitBtn = this._formElement.querySelector('.form__submit-btn');
+    this._initialButtonText = this._submitBtn.textContent;
     
   }
+
 
   setEventListeners() {
     // Вызываем метод setEventListeners родительского класса
@@ -15,20 +18,23 @@ export default class PopupDeletCard extends Popup {
     // Добавляем слушатель события submit формы
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._submitFormCallback(this._element); // Передача данных в колбэк
-      // Закрыть попап после успешной отправки формы
-      this.close();
-
+      this._submitBtn.textContent = `${this._submitBtn.textContent}...` //добавление ... при загрузке сабмита
+      this._submitFormCallback(this._card, this._cardId); // Передача данных в колбэк
+    
     });
 
   }  
 
-  open = (element) => {
+  open = ({ card, cardId }) => {
     super.open();
-    console.log(element)
-    this._element = element;
+    this._card = card;
+    this._cardId = cardId;
 
   }
 
+  setInitialText() {
+    this._submitBtn.textContent = this._initialButtonText;
+
+  }
 
 }

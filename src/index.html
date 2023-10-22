@@ -17,15 +17,15 @@
       <section class="profile" aria-label="Профиль">
         
         <button class="profile__avatar-btn style-btn" type="button" aria-label="Редактировать">
-          <img src="<%=require('./images/profile-image.jpg')%>" alt="Аватар" class="profile__avatar">
+          <img src="#" alt="Аватар профиля" class="profile__avatar">
         </button>
         <div class="profile__info">
           <div class="profile__name-container">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-btn style-btn" type="button" aria-label="Редактировать">
             </button>
           </div>
-          <p class="profile__job">Исследователь океана</p> 
+          <p class="profile__job"></p> 
         </div>
         <button class="profile__add-btn style-btn" type="button" aria-label="Добавить">
         </button>
@@ -57,13 +57,13 @@
     <h3 class="popup__title">Редактировать профиль</h3>
     <form class="form" name="form-profile" novalidate> 
       <div class="form__contact">
-         <label class="form__label" for="input-name">
-          <input id="input-name" class="form__input form__input_type_name" name="input-name" minlength="2" maxlength="40" type="text" required placeholder="Ваше имя">
-          <span class="form__span-error input-name-error"></span>  
+         <label class="form__label" for="username">
+          <input id="username" class="form__input form__input_type_name" name="username" minlength="2" maxlength="40" type="text" required placeholder="Ваше имя">
+          <span class="form__span-error username-error"></span>  
          </label>
-         <label class="form__label" for="input-job">
-          <input id="input-job" class="form__input form__input_type_job" name="input-job" minlength="2" maxlength="200" type="text" required placeholder="О вас">
-          <span class="form__span-error input-job-error"></span>  
+         <label class="form__label" for="job">
+          <input id="job" class="form__input form__input_type_job" name="job" minlength="2" maxlength="200" type="text" required placeholder="О вас">
+          <span class="form__span-error job-error"></span>  
          </label> 
       </div>
         <button class="form__submit-btn style-btn" type="submit">Сохранить</button>
@@ -78,13 +78,13 @@
     <h3 class="popup__title">Новое место</h3>
     <form class="form form_type_add-place" name="form-place" novalidate> 
       <div class="form__contact">
-        <label class="form__label" for="input-place-name">
-          <input id="input-place-name" class="form__input form__input_type_place-name" name="input-place-name" minlength="2" maxlength="30" type="text" required placeholder="Название">
-          <span class="form__span-error input-place-name-error"></span>  
+        <label class="form__label" for="name">
+          <input id="name" class="form__input form__input_type_place-name" name="name" minlength="2" maxlength="30" type="text" required placeholder="Название">
+          <span class="form__span-error name-error"></span>  
          </label>
-         <label class="form__label" for="input-place-link">
-          <input id="input-place-link" class="form__input form__input_type_place-link" name="input-place-link" type="url" required placeholder="Ссылка на картинку">
-          <span class="form__span-error input-place-link-error"></span>  
+         <label class="form__label" for="link">
+          <input id="link" class="form__input form__input_type_place-link" name="link" type="url" required placeholder="Ссылка на картинку">
+          <span class="form__span-error link-error"></span>  
          </label>
       </div>
         <button class="form__submit-btn style-btn" type="submit">Создать</button>
@@ -109,11 +109,11 @@
   <div class="popup__container">
     <button class="popup__close-btn popup__close-btn_type_edit-avatar style-btn" type="button" aria-label="Закрыть"></button>
     <h3 class="popup__title">Обновить аватар</h3>
-    <form class="form form_type_edit-avatar" name="edit-avatar" novalidate> 
+    <form class="form form_type_edit-avatar" name="editAvatar" novalidate> 
       <div class="form__contact">
-        <label class="form__label" for="input-avatar-link">
-          <input id="input-avatar-link" class="form__input form__input_type_avatar-link" name="input-avatar-link" //name="avatar" type="url" required placeholder="Ссылка на картинку">
-          <span class="form__span-error input-avatar-link-error"></span>  
+        <label class="form__label" for="avatar">
+          <input id="avatar" class="form__input form__input_type_avatar-link" name="avatar" type="url" required placeholder="Ссылка на картинку">
+          <span class="form__span-error avatar-error"></span>  
          </label>
       </div>
         <button class="form__submit-btn form__submit-btn_type_edit-avatar style-btn" type="submit">Сохранить</button>
@@ -126,7 +126,7 @@
   <div class="popup__container">
     <button class="popup__close-btn popup__close-btn_type_delete-card style-btn" type="button" aria-label="Закрыть"></button>
     <h3 class="popup__title popup__title_type_delete-card">Вы уверены?</h3>
-    <form class="form form_type_delete-card" name="edit-avatar" novalidate> 
+    <form class="form form_type_delete-card" name="delete-card" novalidate> 
       <button class="form__submit-btn style-btn" type="submit">Да</button>
     </form>
   </div>
@@ -140,7 +140,7 @@
       <h2 class="place__title"></h2>
         <div class="place__like-container">
           <button class="place__like-btn style-btn" type="button" aria-label="Лайк"></button>
-          <span class="place__likes-number">1</span>
+          <span class="place__likes-number"></span>
         </div>
     </div>
     <button class="place__delete-btn style-btn" type="button" aria-label="Корзина"></button>

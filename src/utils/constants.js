@@ -1,30 +1,3 @@
-export const initialPlaces = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const configEnableValidation = {
   formSelector: '.form', // формы
   inputSelector: '.form__input', // поля
@@ -49,5 +22,5 @@ export const addPlaceBtn = document.querySelector('.profile__add-btn');
 export const formAddPlace = document.querySelector('.form_type_add-place');
 // export const formEditAvatar = document.querySelector('.form_type_edit-avatar');
 
-export const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
-export const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
+// export const placeNameInput = formAddPlace.querySelector('.form__input_type_place-name');
+// export const placeImgInput = formAddPlace.querySelector('.form__input_type_place-link');
