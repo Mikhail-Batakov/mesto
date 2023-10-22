@@ -5,20 +5,17 @@
   width: 282px;
   height: 50px;
   border-radius: 2px;
-  border: #FFFFFF solid 2px;
-
+  border: #ffffff solid 2px;
 }
 
 .profile__add-btn:hover {
-    opacity: 0.6;
-  }
+  opacity: 0.6;
+}
 
 @media (min-width: 768px) {
   .profile__add-btn {
     width: 150px;
     background-size: 22px;
     margin-left: auto;
-  
   }
-
 }

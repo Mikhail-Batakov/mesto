@@ -5,7 +5,6 @@
   height: 20px;
   right: 0;
   top: -36px;
-
 }
 
 .popup__close-btn:hover {
@@ -22,6 +21,5 @@
     height: 32px;
     right: -40px;
     top: -40px;
-  
   }
 }

@@ -4,14 +4,13 @@
   background-position: center;
   width: 18px;
   height: 18px;
-  border: #FFFFFF solid 1px;
+  border: #ffffff solid 1px;
   align-self: center;
-
 }
 
- .profile__edit-btn:hover {
-    opacity: 0.6;
-  }
+.profile__edit-btn:hover {
+  opacity: 0.6;
+}
 
 @media (min-width: 768px) {
   .profile__edit-btn {

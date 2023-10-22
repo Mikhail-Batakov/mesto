@@ -11,7 +11,7 @@ export default class Section {
 
   clear() {
     if (this._container) {
-      this._container.innerHTML = '';
+      this._container.innerHTML = "";
     }
   }
 
@@ -27,9 +27,9 @@ export default class Section {
   renderElements(data) {
     //this.clear();
 
-    data.forEach(element => {
-      this._renderer(element)});
-
+    data.forEach((element) => {
+      this._renderer(element);
+    });
   }
 }
 
